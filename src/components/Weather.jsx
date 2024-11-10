@@ -46,7 +46,9 @@ const Weather = () => {
           <img src={ `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="" />
           <h2>{weather.weather[0].description}</h2>
         </div>
-       
+        <div className="weather-temp">
+          <h2>{weather.main.temp} celsius</h2>
+        </div>
        
       </div>
     </div>
