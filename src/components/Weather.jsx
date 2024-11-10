@@ -40,6 +40,11 @@ const Weather = () => {
      {
       error && <p className='error-message'>{error}</p>
      }
+         weather && weather.weather &&
+      <div className="content">
+
+       
+      </div>
     </div>
   )
 }
