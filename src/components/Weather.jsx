@@ -20,9 +20,11 @@ const Weather = () => {
     if(response.ok){
       setWeather(output);
         setError('');
+         setTimeout(setCity(''), 7000);
     }else
     {
-      setError('No data found :(  Please enter a valid city name ')
+      setError('No data found :(  Please enter a valid city name ');
+        setWeather('');
     }
     }
     catch(error){
@@ -46,11 +48,37 @@ const Weather = () => {
           <img src={ `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`} alt="" />
           <h2>{weather.weather[0].description}</h2>
         </div>
-        <div className="weather-temp">
-          <h2>{weather.main.temp} celsius</h2>
-        </div>
-       
-      </div>
+         <div className='weather-temp'>
+                    <h2>{weather.main.temp}<span>&deg;C</span></h2>
+                </div>
+
+                <div className='weather-city'>
+                    <div className='location'>
+                        <MdLocationOn></MdLocationOn>
+                    </div>
+                    <p>{weather.name},<span>{weather.sys.country}</span></p>
+                </div>
+
+                <div className='weather-stats'>
+                    <div className='wind'>
+                        <div className='wind-icon'>
+                            <FaWind></FaWind>
+                        </div>
+                        <h3 className='wind-speed'>{weather.wind.speed}<span>Km/h</span></h3>
+                        <h3 className='wind-heading'>Wind Speed</h3>
+                    </div>    
+                    <div className='humidity'>
+                        <div className='humidity-icon'>
+                            <WiHumidity></WiHumidity>
+                        </div>
+                        <h3 className='humidity-percent'>{weather.main.humidity}<span>%</span></h3>
+                        <h3 className='humidity-heading'>Humidity</h3>
+                    </div>
+                </div>
+                
+            </div>
+        }
+
     </div>
   )
 }
